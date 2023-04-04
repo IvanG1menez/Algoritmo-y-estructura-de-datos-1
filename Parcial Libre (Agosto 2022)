@@ -1,0 +1,65 @@
+//se tienen 2 localidades correspondientes a 3 provincias distintas, hacer la suma de las poblaciones de cada ciudad de las 3 provincias
+
+Program PropuestoArrayRegis1;
+
+Uses crt;
+
+Type 
+  provincia = Record
+    cod_prov: integer;
+    locali: string;
+    n_habit: LongInt;
+
+  End;
+  vector = array[1..10] Of provincia;
+
+Var 
+  i,e,c: integer;
+  prov: vector;
+
+Procedure carga;
+Begin
+  prov[1].cod_prov := 1;
+  prov[1].locali := 'Corrientes';
+  prov[1].n_habit := 300000;
+
+  prov[2].cod_prov := 1;
+  prov[2].locali := 'ituzaingo';
+  prov[2].n_habit := 30000;
+
+  prov[3].cod_prov := 2;
+  prov[3].locali := 'posadas';
+  prov[3].n_habit := 200000;
+
+  prov[4].cod_prov := 2;
+  prov[4].locali := 'apostoles';
+  prov[4].n_habit := 100000;
+
+  prov[5].cod_prov := 3;
+  prov[5].locali := 'ushuaia';
+  prov[5].n_habit := 25000;
+
+  prov[6].cod_prov := 3;
+  prov[6].locali := 'rio grande';
+  prov[6].n_habit := 20000;
+End;
+
+Begin
+  c := 0;
+  carga();
+  writeln('ingrese un numero ');
+  ReadLn(e);
+  For i:=1 To 6 Do
+    Begin
+      If prov[i].cod_prov = e Then
+        Begin
+          WriteLn('La provincia ',prov[i].locali, ' tiene ',prov[i].n_habit,
+                  ' habitantes');
+          c := c+1;
+        End;
+    End;
+  If c= 0 Then
+    Begin
+      WriteLn('no se ha encontrado localidad con el numero especificado');
+    End;
+End.
